@@ -1,14 +1,24 @@
+let elem = document.getElementById('slider');
+const items = elem.querySelectorAll('img');
+const itemCount = items.length;
+const shift = elem.clientWidth;
+let shiftCounter = 1;
+let pause = false
 
+elem.onmouseover = function () {
+   pause = true;
+};
 
-function slideImg(elem) {
-   console.log(elem);
-   console.log(elem.querySelectorAll('img'));
+elem.onmouseout = function () {
+   pause = false;
+};
 
-   let moved = elem.querySelector('img').cloneNode(true);
-   elem.querySelector('img').remove();
-
-   elem.append(moved);
-
+function slideImg() {
+   if (pause) { return }
+   shiftCounter++;
+   elem.style.transform = `translate(${-shift * (shiftCounter % itemCount)}px)`
 }
 
-let timerId = setInterval(slideImg, 3000, document.getElementById('slider'));
+
+
+var timerId = setInterval(slideImg, 1500);
