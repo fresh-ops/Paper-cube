@@ -1,9 +1,9 @@
-let elem = document.getElementById('slider');
+const elem = document.getElementById('slider');
 const items = elem.querySelectorAll('img');
-const itemCount = items.length;
-const shift = elem.clientWidth;
-let shiftCounter = 1;
-let pause = false
+const itemCount: number = items.length;
+const shift: number = elem.clientWidth;
+let shiftCounter: number = 0;
+let pause: boolean = false;
 
 elem.onmouseover = function () {
    pause = true;
@@ -16,9 +16,9 @@ elem.onmouseout = function () {
 function slideImg() {
    if (pause) { return }
    shiftCounter++;
-   elem.style.transform = `translate(${-shift * (shiftCounter % itemCount)}px)`
+   elem.style.transform = `translate(${-shift * (shiftCounter % itemCount)}px)`;
 }
 
+let t: string = 'fff';
 
-
-var timerId = setInterval(slideImg, 1500);
+let timerId = setInterval(slideImg, 3000);
